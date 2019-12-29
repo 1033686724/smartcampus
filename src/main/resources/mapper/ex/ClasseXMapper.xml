@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ClassEXMapper">
+    <resultMap id="cla" type="com.briup.smartcampus.bean.ex.ClassEX">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="description" property="description"/>
+        <result column="server_number" property="serveNumber"/>
+        <result column="student_number" property="studentNumber"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="teacher_id" property="teacherId"/>
+        <association property="teacher" column="teacher_id"
+                     select="selectTeacher"></association>
+        <association property="department" column="department_id"
+                     select="selectDepartment"></association>
+    </resultMap>
+    <select id="findAll" resultMap="cla">
+        select * from briup_clazz
+    </select>
+
+    <select id="selectTeacher" resultType="com.briup.smartcampus.bean.Teacher">
+        select * from briup_teacher where id = #{id}
+    </select>
+    <select id="selectDepartment" resultType="com.briup.smartcampus.bean.Department">
+        select * from briup_department where id = #{id}
+    </select>
+</mapper>
