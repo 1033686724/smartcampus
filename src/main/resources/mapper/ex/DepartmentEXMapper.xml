@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.DepartmentEXMapper">
+    <resultMap id="abn" type="com.briup.smartcampus.bean.Department">
+        <id column="id"  property="id" />
+        <result column="name"  property="name" />
+        <result column="region_id" property="regionId" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <select id="selectByNameOrDescription" resultMap="abn">
+        select * from briup_department where description like #{word} or name like #{word}
+    </select>
+    <select id="selectAll" resultMap="abn">
+        select * from briup_department
+    </select>
+
+</mapper>
