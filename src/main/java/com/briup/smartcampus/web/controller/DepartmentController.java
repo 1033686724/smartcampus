@@ -10,10 +10,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +27,7 @@ public class DepartmentController {
         DepartmentService.saveOrUpdate(department);
         return MessageUtil.success();
     }
-    @PostMapping("/updateDepartment")
+    @PutMapping("/updateDepartment")
     @ApiModelProperty("修改年级")
     public Message updateDepartment(Department department){
         DepartmentService.saveOrUpdate(department);
@@ -50,7 +47,7 @@ public class DepartmentController {
 //        return MessageUtil.success(department);
 //    }
 
-    @PostMapping("/deleteBatch")
+    @DeleteMapping("/deleteBatch")
     @ApiModelProperty("批量删除")
     @ApiImplicitParam(name = "id",value = "逗号分隔id",dataType = "int",paramType = "query")
     public Message deleteBatch(int...id){
@@ -58,7 +55,7 @@ public class DepartmentController {
             DepartmentService.deleteById(id[i]);
         return MessageUtil.success();
     }
-    @PostMapping("/deleteById")
+    @DeleteMapping("/deleteById")
     @ApiModelProperty("按id删除")
     public Message deleteById(int id){
         DepartmentService.deleteById(id);
