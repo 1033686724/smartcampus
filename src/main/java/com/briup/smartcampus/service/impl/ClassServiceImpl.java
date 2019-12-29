@@ -4,7 +4,7 @@ import com.briup.smartcampus.bean.Class;
 import com.briup.smartcampus.bean.ex.ClassEX;
 
 import com.briup.smartcampus.mapper.ClassMapper;
-import com.briup.smartcampus.mapper.ClassEXMapper;
+import com.briup.smartcampus.mapper.ex.ClassEXMapper;
 import com.briup.smartcampus.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

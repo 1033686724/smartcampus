@@ -1,4 +1,4 @@
-package com.briup.smartcampus.mapper;
+package com.briup.smartcampus.mapper.ex;
 
 import com.briup.smartcampus.bean.ex.ClassEX;
 
