@@ -1,12 +1,11 @@
 package com.briup.smartcampus.service.impl;
 
 import com.briup.smartcampus.bean.Department;
-import com.briup.smartcampus.bean.DepartmentExample;
+
 import com.briup.smartcampus.mapper.DepartmentMapper;
 import com.briup.smartcampus.mapper.ex.DepartmentEXMapper;
 import com.briup.smartcampus.service.IDepartmentService;
-import com.briup.smartcampus.util.Message;
-import com.sun.org.apache.regexp.internal.RE;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -50,7 +50,7 @@ public class DepartmentController {
 //        return MessageUtil.success(department);
 //    }
 
-    @PostMapping("/deleteBatch")
+    @GetMapping("/deleteBatch")
     @ApiModelProperty("批量删除")
     @ApiImplicitParam(name = "id",value = "逗号分隔id",dataType = "int",paramType = "query")
     public Message deleteBatch(int...id){
@@ -58,7 +58,7 @@ public class DepartmentController {
             DepartmentService.deleteById(id[i]);
         return MessageUtil.success();
     }
-    @PostMapping("/deleteById")
+    @GetMapping("/deleteById")
     @ApiModelProperty("按id删除")
     public Message deleteById(int id){
         DepartmentService.deleteById(id);
