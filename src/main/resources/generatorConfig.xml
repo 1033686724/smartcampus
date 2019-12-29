@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- mybatis-generator的核心配置文件 -->
+<generatorConfiguration>
+
+	<classPathEntry
+		location="D:\java12.23\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!-- 注意！如果要重新生成pojo类，务必改成项目组数据库，用户名密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://120.78.171.248:3306/group7" userId="group7"
+			password="group7">
+		</jdbcConnection>
+
+
+		<!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--自动生成的实体的存放包路径 -->
+		<javaModelGenerator targetPackage="com.briup.smartcampus.bean"
+			targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--自动生成的*Mapper.xml文件存放路径 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!--自动生成的*Mapper.java存放路径 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.briup.smartcampus.mapper" targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+		<!-- 映射配置 -->
+		<table tableName="briup_clazz" domainObjectName="Class"></table>
+		<table tableName="briup_course" domainObjectName="Course"></table>
+		<table tableName="briup_department" domainObjectName="Department"></table>
+		<table tableName="briup_log" domainObjectName="Log"></table>
+		<table tableName="briup_options" domainObjectName="Options"></table>
+		<table tableName="briup_qqn" domainObjectName="Qqn"></table>
+		<table tableName="briup_question" domainObjectName="Question"></table>
+		<table tableName="briup_questionnaire" domainObjectName="Questionnaire"></table>
+		<table tableName="briup_region" domainObjectName="Region"></table>
+		<table tableName="briup_survey" domainObjectName="Survey"></table>
+		<table tableName="briup_teacher" domainObjectName="Teacher"></table>
+		<table tableName="briup_article" domainObjectName="Article"></table>
+		<table tableName="briup_category" domainObjectName="Category"></table>
+		<table tableName="briup_customer" domainObjectName="Customer"></table>
+		<table tableName="briup_link" domainObjectName="Link"></table>
+	</context>
+</generatorConfiguration>
