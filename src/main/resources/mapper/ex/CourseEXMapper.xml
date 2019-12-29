@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.CourseEXMapper">
+    <select id="selectNameOrPeriodOrDescription" resultType="com.briup.smartcampus.bean.Course">
+     select * from briup_course where name like #{word} or period like #{word} or description like #{word}
+    </select>
+
+    <select id="selectName" resultType="com.briup.smartcampus.bean.Course">
+    select * from briup_course where name like #{word}
+    </select>
+
+    <select id="selectPeriod" resultType="com.briup.smartcampus.bean.Course">
+     select * from briup_course where period like #{word}
+    </select>
+
+    <select id="selectDescription" resultType="com.briup.smartcampus.bean.Course">
+    select * from briup_course where description like #{word}
+    </select>
+
+</mapper>
