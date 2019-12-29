@@ -57,4 +57,10 @@ public class CourseServiceImpl implements ICourseService {
         }
         return null;
     }
+
+    @Override
+    public Course selectById(int id) throws RuntimeException {
+    Course course=courseMapper.selectByPrimaryKey(id);
+        return course;
+    }
 }

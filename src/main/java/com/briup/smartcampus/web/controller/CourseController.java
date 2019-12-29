@@ -64,4 +64,11 @@ public class CourseController {
         }
         return MessageUtil.success();
     }
+    @GetMapping("/selectById")
+@ApiOperation(value ="根据id查询课程" )
+    @ApiImplicitParam(name="id",value = "课程id",paramType = "query",dataType ="int" ,required = true)
+    public Message selectById(int id){
+        Course course=courseService.selectById(id);
+        return MessageUtil.success(course);
+    }
 }

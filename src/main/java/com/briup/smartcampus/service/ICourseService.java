@@ -9,5 +9,6 @@ public interface ICourseService {
     void deleteById(int id) throws  RuntimeException;//根据id删除
     void  saveOrUpdate(Course course)throws RuntimeException;//修改，新增
     List<Course> searcher(String key, String word)throws RuntimeException;//搜索
+    Course selectById(int id) throws RuntimeException;
 
 }
