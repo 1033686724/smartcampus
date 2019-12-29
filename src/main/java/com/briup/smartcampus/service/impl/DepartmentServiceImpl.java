@@ -51,7 +51,10 @@ public class DepartmentServiceImpl implements IDepartmentService {
            departmentMapper.deleteByPrimaryKey(id);
     }
 
-
+//    @Override
+//    public void deleteBatch(int[] id) throws RuntimeException {
+//        departmentMapper.deleteByPrimaryKey();
+//    }
 
 
 }
