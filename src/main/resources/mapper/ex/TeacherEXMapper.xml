@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.TeacherEXMapper">
+    <resultMap id="abn" type="com.briup.smartcampus.bean.Teacher">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="gender" property="gender"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="startday" property="startday"></result>
+    </resultMap>
+    <select id="findTeacher" resultMap="abn">
+        select * from briup_teacher
+    </select>
+    <select id="selectPart" resultMap="abn">
+        select * from briup_teacher where name like #{value} or gender like #{value} or birthday like #{value}
+                                                    or startday like #{value}
+    </select>
+    <select id="selectName" resultMap="abn">
+        select * from briup_teacher where name like #{value}
+    </select>
+    <select id="selectGender" resultMap="abn">
+        select * from briup_teacher where gender like #{value}
+    </select>
+    <select id="selectBirthday" resultMap="abn">
+        select * from briup_teacher where birthday like #{value}
+    </select>
+    <select id="selectStartday" resultMap="abn">
+        select * from briup_teacher where startday like #{value}
+    </select>
+
+</mapper>
