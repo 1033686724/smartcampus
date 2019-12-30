@@ -38,10 +38,4 @@
     <select id="selectMaxId" resultType="com.briup.smartcampus.bean.Questionnaire">
         select * from briup_questionnaire order by id desc limit 0,1
     </select>
-<delete id="deleteQqn">
-    delete * from briup_qqn where questionnaire_id=#{id}
-</delete>
-    <delete id="deleteSurvey">
-        delete * from briup_survey where questionnaire_id={id}
-    </delete>
 </mapper>
