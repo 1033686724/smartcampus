@@ -4,7 +4,9 @@
 <mapper namespace="com.briup.smartcampus.mapper.ex.QuestionnaireEXMapper">
 
     <resultMap id="abc" type="com.briup.smartcampus.mapper.QqnMapper">
-        <id column="question_id" property="id"></id>
+        <id column="id"  property="id" />
+        <result column="question_id"  property="questionId" />
+        <result column="questionnaire_id"  property="questionnaireId" />
 
         <collection property="questions"
                     ofType="com.briup.smartcampus.bean.Qqn"
@@ -29,7 +31,7 @@
     </insert>
 
     <insert id="insertQuestion" keyColumn="id">
-        <selectKey keyColumn="questionnaire_id" keyProperty="questionnaire_id" order="AFTER" resultType="int">
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
             select LAST_INSERT_ID()
         </selectKey>
         insert into briup_qqn values (#{id},#{questionnaire_id})
