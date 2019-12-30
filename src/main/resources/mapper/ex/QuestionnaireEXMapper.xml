@@ -31,7 +31,7 @@
     </insert>
 
     <insert id="insertQuestion" keyColumn="id">
-        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+        <selectKey keyColumn="id" keyProperty="questionnaire_id" order="AFTER" resultType="int">
             select LAST_INSERT_ID()
         </selectKey>
         insert into briup_qqn values (#{id},#{questionnaire_id})
