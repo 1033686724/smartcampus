@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.briup.smartcampus.mapper.ex.QuestionnaireEXMapper">
+    <select id="selectNameById" resultType="com.briup.smartcampus.bean.Questionnaire">
+        select * from briup_questionnaire where id=#{id}
+    </select>
+
+    <select id="selectByWord" resultType="com.briup.smartcampus.bean.Questionnaire">
+        select * from briup_questionnaire where name like #{word} or description like #{word}
+    </select>
+</mapper>
