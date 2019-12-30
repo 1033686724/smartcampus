@@ -6,7 +6,7 @@
         select * from briup_questionnaire where id=#{id}
     </select>
 
-    <select id="selectByWord" resultType="com.briup.smartcampus.bean.Questionnaire">
+    <select id="selectNameByWord" resultType="com.briup.smartcampus.bean.Questionnaire">
         select * from briup_questionnaire where name like #{word} or description like #{word}
     </select>
 
