@@ -13,4 +13,23 @@
     <select id="selectAll" resultType="com.briup.smartcampus.bean.Questionnaire">
         select * from briup_questionnaire
     </select>
+    <resultMap id="abc" type="com.briup.smartcampus.mapper.QqnMapper">
+         <id column="question_id" property="id"></id>
+
+        <collection property="questions"
+                    ofType="com.briup.smartcampus.bean.Qqn"
+                    column="questionnaire_id"
+                    select="selectQuestion"></collection>
+    </resultMap>
+    <insert id="insertQuestionnaire" >
+        insert into briup_questionnaire values(#{name} #{description})
+    </insert>
+
+    <insert id="insertQuestion" keyColumn="id">
+        <selectKey keyColumn="questionnaire_id" keyProperty="questionnaire_id" order="AFTER" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into briup_qqn values (#{id}#{questionnaire_id})
+    </insert>
+
 </mapper>
