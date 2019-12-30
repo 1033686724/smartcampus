@@ -10,6 +10,6 @@ public interface QuestionnaireEXMapper {
     List<Questionnaire> selectNameById(int id) throws RuntimeException;//根据id查询
     List<Questionnaire> selectNameByWord(String word)throws RuntimeException;//根据关键字查询
     void insertQuestionnaire(Questionnaire questionnaire)throws RuntimeException;
-    void insertQuestion(int id)throws RuntimeException;
+    void insertQuestion(int id,int qnid)throws RuntimeException;
 
 }
