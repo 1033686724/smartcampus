@@ -42,7 +42,7 @@ public class QuestionController {
     }
 
 
-    @DeleteMapping("/deleteBatch")
+    @GetMapping("/deleteBatch")
     @ApiOperation(value = "批量删除")
     public Message deleteBatch(int[] ids){
         for (int id : ids){
@@ -50,7 +50,7 @@ public class QuestionController {
         }
         return MessageUtil.success();
     }
-    @DeleteMapping("/deleteById")
+    @GetMapping("/deleteById")
     @ApiModelProperty("按id删除")
     public Message deleteById(int id){
         iQuestionService.deleteById(id);
