@@ -13,5 +13,7 @@ public interface QuestionnaireEXMapper {
     void insertQuestionnaire(Questionnaire questionnaire)throws RuntimeException;
     void insertQuestion(Qqn qqn)throws RuntimeException;
     Questionnaire selectMaxId() throws  RuntimeException;
+    void deleteQqn(int id)throws RuntimeException;
+    void deleteSurvey(int id)throws RuntimeException;
 
 }
