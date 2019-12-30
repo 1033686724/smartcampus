@@ -12,5 +12,7 @@ public interface ClassEXMapper {
     List<ClassEX> selectClassname(String word);
 
     List<ClassEX> selectClassnameOrTeacher(String word);
+
+    
 }
 
