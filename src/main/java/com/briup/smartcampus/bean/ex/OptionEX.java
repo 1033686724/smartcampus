@@ -13,6 +13,16 @@ public class OptionEX implements Serializable {
 
     private Integer score;
 
+    private Integer questionId;
+
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
+
     private Question question;
 
     public Integer getId() {
@@ -55,3 +65,4 @@ public class OptionEX implements Serializable {
         this.question = question;
     }
 }
+

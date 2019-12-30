@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.QuestionEXMapper">
+    <resultMap id="tbq" type="com.briup.smartcampus.bean.ex.QuestionEX">
+        <id column="id"  property="id" />
+        <result column="name"  property="name" />
+        <result column="type" property="type" />
+        <association property="options" column="id"
+                     select="selectOption"></association>
+    </resultMap>
+    <select id="selectByNameOrType" resultMap="tbq">
+        select * from briup_question where name like #{word} or type like #{word}
+    </select>
+    <select id="selectAll" resultMap="tbq">
+        select * from briup_question
+    </select>
+    <select id="selectOption" resultType="com.briup.smartcampus.bean.Options">
+        select * from briup_options where question_id = #{id}
+    </select>
+</mapper>

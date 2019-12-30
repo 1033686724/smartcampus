@@ -1,21 +1,26 @@
-package com.briup.smartcampus.bean;
+package com.briup.smartcampus.bean.ex;
+
+import com.briup.smartcampus.bean.Options;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class Question implements Serializable {
+public class QuestionEX implements Serializable {
     private Integer id;
 
     private String name;
 
     private String type;
 
-    private Options options;
 
-    public Options getOptions() {
+
+    private List<Options> options;
+
+    public List<Options> getOptions() {
         return options;
     }
 
-    public void setOptions(Options options) {
+    public void setOptions(List<Options> options) {
         this.options = options;
     }
 
