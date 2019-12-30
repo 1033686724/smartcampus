@@ -12,5 +12,6 @@ public interface QuestionnaireEXMapper {
     List<Questionnaire> selectNameByWord(String word)throws RuntimeException;//根据关键字查询
     void insertQuestionnaire(Questionnaire questionnaire)throws RuntimeException;
     void insertQuestion(Qqn qqn)throws RuntimeException;
+    void selectMaxId();
 
 }

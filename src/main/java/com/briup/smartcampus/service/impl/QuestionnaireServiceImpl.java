@@ -23,8 +23,11 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
         else if (questionnaire.getId()==null){
             questionnaireEXMapper.insertQuestionnaire(questionnaire);
             Qqn qqn=new Qqn();
+            //
             qqn.setQuestionnaireId(questionnaire.getId());
             qqn.setQuestionId(id);
+            //问卷 id   题目   get  questiomid     ----》 qqn
+            //inset qqn
             questionnaireEXMapper.insertQuestion(qqn);
         }
 //        else

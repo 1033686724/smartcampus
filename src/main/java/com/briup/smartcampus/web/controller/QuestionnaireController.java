@@ -21,11 +21,9 @@ public class QuestionnaireController {
     @PostMapping("/addById")
     @ApiModelProperty(value = "添加问卷")
     public Message addQuestionnaire(Questionnaire questionnaire, int[] id){
-
         for (int i=0;i<id.length;i++){
             iQuestionnaireService.saveOrUpdate(questionnaire,id[i]);
         }
-
         return MessageUtil.success();
     }
 
