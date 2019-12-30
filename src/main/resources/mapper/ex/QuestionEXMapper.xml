@@ -17,4 +17,6 @@
     <select id="selectOption" resultType="com.briup.smartcampus.bean.Options">
         select * from briup_options where question_id = #{id}
     </select>
+
+
 </mapper>

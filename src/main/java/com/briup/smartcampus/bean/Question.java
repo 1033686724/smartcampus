@@ -1,6 +1,7 @@
 package com.briup.smartcampus.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Question implements Serializable {
     private Integer id;
@@ -9,13 +10,13 @@ public class Question implements Serializable {
 
     private String type;
 
-    private Options options;
+    private List<Options> options;
 
-    public Options getOptions() {
+    public List<Options> getOptions() {
         return options;
     }
 
-    public void setOptions(Options options) {
+    public void setOptions(List<Options> options) {
         this.options = options;
     }
 

@@ -10,4 +10,10 @@ public interface QuestionEXMapper {
     List<QuestionEX> selectAll() throws RuntimeException;
 
     List<QuestionEX> selectByNameOrType(String word) throws RuntimeException;
+
+    void updateQAO(QuestionEX questionEX) throws RuntimeException;
+
+    void insertQAO(QuestionEX questionEX) throws RuntimeException;
+
+
 }

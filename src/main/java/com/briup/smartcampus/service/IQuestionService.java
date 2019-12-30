@@ -12,4 +12,5 @@ public interface IQuestionService {
     List<QuestionEX> searcher(String word)throws RuntimeException;
     Question selectById(int id) throws RuntimeException;
     void deleteById(int id) throws  RuntimeException;
+
 }

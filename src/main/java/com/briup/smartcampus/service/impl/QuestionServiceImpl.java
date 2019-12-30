@@ -27,6 +27,8 @@ public class QuestionServiceImpl implements IQuestionService {
         return list;
     }
 
+
+
     @Override
     public void deleteById(int id) throws RuntimeException {
         questionMapper.deleteByPrimaryKey(id);
