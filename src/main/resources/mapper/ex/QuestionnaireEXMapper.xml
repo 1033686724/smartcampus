@@ -9,4 +9,8 @@
     <select id="selectByWord" resultType="com.briup.smartcampus.bean.Questionnaire">
         select * from briup_questionnaire where name like #{word} or description like #{word}
     </select>
+
+    <select id="selectAll" resultType="com.briup.smartcampus.bean.Questionnaire">
+        select * from briup_questionnaire
+    </select>
 </mapper>
