@@ -1,5 +1,7 @@
 package com.briup.smartcampus.service.impl;
 
+import com.briup.smartcampus.bean.Qqn;
+import com.briup.smartcampus.bean.Question;
 import com.briup.smartcampus.bean.Questionnaire;
 import com.briup.smartcampus.mapper.QuestionnaireMapper;
 import com.briup.smartcampus.mapper.ex.QuestionnaireEXMapper;
@@ -15,13 +17,19 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     @Autowired
     private QuestionnaireEXMapper questionnaireEXMapper;
     @Override
-    public void saveOrUpdate(Questionnaire questionnaire) throws RuntimeException {
+    public void saveOrUpdate(Questionnaire questionnaire,int id) throws RuntimeException {
         if (questionnaire==null)
             throw new RuntimeException("参数为空");
-       // else if (questionnaire.getId()==null)
-           // questionnaireEXMapper.insert(questionnaire);
-        else
-            questionnaireMapper.updateByPrimaryKey(questionnaire);
+        else if (questionnaire.getId()==null){
+            questionnaireEXMapper.insertQuestionnaire(questionnaire);
+            Qqn qqn=new Qqn();
+            qqn.setQuestionnaireId(questionnaire.getId());
+            qqn.setQuestionId(id);
+            questionnaireEXMapper.insertQuestion(qqn);
+        }
+//        else
+//            questionnaireMapper.updateByPrimaryKey(questionnaire);
+
 
     }
 

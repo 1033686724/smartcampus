@@ -1,5 +1,6 @@
 package com.briup.smartcampus.web.controller;
 
+import com.briup.smartcampus.bean.Qqn;
 import com.briup.smartcampus.bean.Questionnaire;
 import com.briup.smartcampus.service.IQuestionnaireService;
 import com.briup.smartcampus.util.Message;
@@ -7,9 +8,7 @@ import com.briup.smartcampus.util.MessageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,9 +18,14 @@ import java.util.List;
 public class QuestionnaireController {
     @Autowired
     IQuestionnaireService iQuestionnaireService;
+    @PostMapping("/addById")
+    @ApiModelProperty(value = "添加问卷")
+    public Message addQuestionnaire(Questionnaire questionnaire, int[] id){
 
-    public Message addQuestionnaire(Questionnaire questionnaire){
-        iQuestionnaireService.saveOrUpdate(questionnaire);
+        for (int i=0;i<id.length;i++){
+            iQuestionnaireService.saveOrUpdate(questionnaire,id[i]);
+        }
+
         return MessageUtil.success();
     }
 
