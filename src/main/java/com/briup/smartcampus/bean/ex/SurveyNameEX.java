@@ -4,11 +4,13 @@ import com.briup.smartcampus.bean.Course;
 import com.briup.smartcampus.bean.Department;
 import com.briup.smartcampus.bean.Questionnaire;
 import com.briup.smartcampus.bean.Teacher;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class SurveyEX implements Serializable {
+public class SurveyNameEX implements Serializable {
+    @ApiModelProperty(hidden = true)
     private Integer id;
 
     private String status;
@@ -16,15 +18,15 @@ public class SurveyEX implements Serializable {
     private Integer code;
 
     private Date surveyday;
-
+    @ApiModelProperty(hidden = true)
     private Integer departmentId;
-
+    @ApiModelProperty(hidden = true)
     private Integer courseId;
-
+    @ApiModelProperty(hidden = true)
     private Integer clazzId;
-
+    @ApiModelProperty(hidden = true)
     private Integer teacherId;
-
+    @ApiModelProperty(hidden = true)
     private Integer questionnaireId;
 
     private Double average;
@@ -162,6 +164,49 @@ public class SurveyEX implements Serializable {
 
 
     private static final long serialVersionUID = 1L;
+    private String departmentName;
+    private String courseName;
+    private String className;
+    private String teacherName;
+    private String questionnaireName;
 
+    public String getDepatmentName() {
+        return departmentName;
+    }
 
+    public void setDepatmentName(String depatmentName) {
+        this.departmentName = depatmentName;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getQuestionnaireName() {
+        return questionnaireName;
+    }
+
+    public void setQuestionnaireName(String questionnaireName) {
+        this.questionnaireName = questionnaireName;
+    }
 }

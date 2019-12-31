@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.SurveyMonitorEXMapper">
+    <resultMap id="abn" type="com.briup.smartcampus.bean.ex.SurveyEX">
+        <id column="id" property="id"></id>
+        <result column="status" property="status"></result>
+        <result column="code" property="code"></result>
+    </resultMap>
+    <resultMap id="abb" type="com.briup.smartcampus.bean.ex.SurveyNameEX">
+        <id column="dname" property="departmentName"/>
+        <id column="czoname" property="className"/>
+        <id column="coame" property="courseName"/>
+        <id column="tname" property="teacherName"/>
+        <id column="qname" property="questionnaireName"/>
+    </resultMap>
+<!--    <resultMap id="department" type="com.briup.smartcampus.bean.Department">-->
+<!--            <id column="id" property="id"></id>-->
+<!--            <result column="name" property="name"></result>-->
+<!--    </resultMap>-->
+
+<!--    <resultMap id="class" type="com.briup.smartcampus.bean.Class">-->
+<!--        <id column="id" property="id"></id>-->
+<!--        <result column="name" property="name"></result>-->
+<!--    </resultMap>-->
+
+<!--    <resultMap id="course" type="com.briup.smartcampus.bean.Course">-->
+<!--        <id column="id" property="id"></id>-->
+<!--        <result column="name" property="name"></result>-->
+<!--    </resultMap>-->
+
+<!--    <resultMap id="teacher" type="com.briup.smartcampus.bean.Teacher">-->
+<!--        <id column="id" property="id"></id>-->
+<!--        <result column="name" property="name"></result>-->
+<!--    </resultMap>-->
+    <select id="selectByUnknown" resultMap="abb">
+        select cz.name czname,co.name coname,d.name dname,t.name tname,s.surveyday,s.status,s.code,q.name qname
+        from briup_teacher t,briup_course co,briup_department d,briup_clazz cz,briup_survey s,briup_questionnaire q
+        where   s.user_id=t.id   and
+                s.course_id=co.id   and
+                s.department_id=d.id and
+                s.clazz_id=cz.id    and
+            (   cz.name like #{word} or
+                co.name like #{word} or
+                d.name  like #{word} or
+                t.name  like #{word}
+                )
+
+    </select>
+    <select id="selectAll" resultMap="abb">
+        select cz.name czname,co.name coname,d.name dname,t.name tname,s.surveyday,s.status,s.code
+        from briup_teacher t,briup_course co,briup_department d,briup_clazz cz,briup_survey s
+        where   s.user_id=t.id   and
+                s.course_id=co.id   and
+                s.department_id=d.id and
+                s.clazz_id=cz.id
+
+    </select>
+</mapper>

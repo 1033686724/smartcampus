@@ -1,9 +1,7 @@
 package com.briup.smartcampus.web.controller;
 
-import com.briup.smartcampus.bean.Qqn;
-import com.briup.smartcampus.bean.Question;
+
 import com.briup.smartcampus.bean.Questionnaire;
-import com.briup.smartcampus.bean.ex.QuestionnaireEX;
 import com.briup.smartcampus.service.IQuestionnaireService;
 import com.briup.smartcampus.util.Message;
 import com.briup.smartcampus.util.MessageUtil;
@@ -12,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,8 +18,10 @@ import java.util.List;
 @Api(description = "问卷管理")
 public class QuestionnaireController {
     @Autowired
-    @ApiModelProperty("按id添加")
     IQuestionnaireService iQuestionnaireService;
+
+
+    @ApiModelProperty("按id添加")
     @PostMapping("/addById")
     public Message addQuestionnaire(Questionnaire questionnaire, int[] qid){
         for (int i=0;i<qid.length;i++){
@@ -42,8 +43,10 @@ public class QuestionnaireController {
     }
     @GetMapping("/Preview")
     public  Message  preview(int id){
-        Questionnaire qs=iQuestionnaireService.selectById(id);
-        return MessageUtil.success();
+        List<Object> list=new ArrayList<>();
+        list.add(iQuestionnaireService.preview(id));
+        list.add(iQuestionnaireService.previewQn(id));
+        return MessageUtil.success(list);
     }
 
     @DeleteMapping("/deleteQustionnaire")

@@ -84,7 +84,7 @@ public class QuestionnaireServiceImpl<T> implements IQuestionnaireService {
 
 
     @Override
-    public List<Object>  preview(int id) throws RuntimeException {
+    public List<Question>  preview(int id) throws RuntimeException {
         Questionnaire questionnaire=questionnaireMapper.selectByPrimaryKey(id);
 
         QqnExample qqnExample=new QqnExample();
@@ -98,7 +98,13 @@ public class QuestionnaireServiceImpl<T> implements IQuestionnaireService {
             list1.addAll(question);
 
         }
-       return null;
+       return list1;
+    }
+
+    @Override
+    public Questionnaire previewQn(int id) throws RuntimeException {
+        Questionnaire questionnaire=questionnaireMapper.selectByPrimaryKey(id);
+        return questionnaire;
     }
 
 
