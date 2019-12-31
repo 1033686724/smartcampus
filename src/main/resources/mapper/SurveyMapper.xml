@@ -108,11 +108,11 @@
   <insert id="insert" parameterType="com.briup.smartcampus.bean.Survey">
     insert into briup_survey (id, status, code, 
       surveyday, department_id, course_id, 
-      clazz_id, user_id, questionnaire_id, 
+      clazz_id, user_id, questionnaire_id,
       average)
     values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{code,jdbcType=INTEGER}, 
       #{surveyday,jdbcType=DATE}, #{departmentId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
-      #{clazzId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{questionnaireId,jdbcType=INTEGER}, 
+      #{clazzId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{questionnaireId,jdbcType=INTEGER},
       #{average,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.briup.smartcampus.bean.Survey">

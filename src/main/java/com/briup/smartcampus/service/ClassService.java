@@ -11,7 +11,7 @@ public interface ClassService {
     List<ClassEX> searcher(String key, String word) throws RuntimeException;
     void saveOrUpdate(Class clas) throws RuntimeException;
 
-    void deleteBatch(int[] ids) throws RuntimeException;
+    //void deleteBatch(int[] ids) throws RuntimeException;
 
     void deleteById(int id) throws RuntimeException;
 }

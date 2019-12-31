@@ -1,5 +1,6 @@
 package com.briup.smartcampus.bean.ex;
 
+import com.briup.smartcampus.bean.Class;
 import com.briup.smartcampus.bean.Course;
 import com.briup.smartcampus.bean.Department;
 import com.briup.smartcampus.bean.Questionnaire;
@@ -23,7 +24,15 @@ public class SurveyEX implements Serializable {
 
     private Integer clazzId;
 
-    private Integer teacherId;
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    private Integer userId;
 
     private Integer questionnaireId;
 
@@ -89,13 +98,7 @@ public class SurveyEX implements Serializable {
         this.clazzId = clazzId;
     }
 
-    public Integer getTeacherId() {
-        return teacherId;
-    }
 
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
-    }
 
     public Integer getQuestionnaireId() {
         return questionnaireId;
@@ -129,13 +132,7 @@ public class SurveyEX implements Serializable {
         this.course = course;
     }
 
-    public Class getaClass() {
-        return aClass;
-    }
 
-    public void setaClass(Class aClass) {
-        this.aClass = aClass;
-    }
 
     public Teacher getTeacher() {
         return teacher;
@@ -153,7 +150,17 @@ public class SurveyEX implements Serializable {
         this.questionnaire = questionnaire;
     }
 
-    private Class aClass;
+
+
+    private Class clazz;
+
+    public Class getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
+    }
 
     private Teacher teacher;
 

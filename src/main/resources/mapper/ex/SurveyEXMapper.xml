@@ -9,9 +9,36 @@
         <result column="department_id" property="departmentId"></result>
         <result column="course_id" property="courseId"></result>
         <result column="clazz_id" property="clazzId"></result>
-        <result column="teacher_id" property="teacherId"></result>
+        <result column="user_id" property="userId"></result>
         <result column="questionnaire_id" property="questionnaireId"></result>
         <result column="average" property="average"></result>
+        <association property="department" column="department_id" select="selectDepartment"></association>
+        <association property="course" column="course_id" select="selectCourse"></association>
+        <association property="clazz" column="clazz_id" select="selectClazz"></association>
+        <association property="teacher" column="user_id" select="selectTeacher"></association>
+        <association property="questionnaire" column="questionnaire_id" select="selectQuestionnaire"></association>
+
 
     </resultMap>
+    <select id="findAll" resultMap="abn">
+        select * from briup_survey
+
+    </select>
+    <select id="selectDepartment" resultType="com.briup.smartcampus.bean.Department">
+        select * from briup_department where id = #{id}
+    </select>
+    <select id="selectCourse" resultType="com.briup.smartcampus.bean.Course">
+        select * from briup_course where id = #{id}
+    </select>
+    <select id="selectClazz" resultType="com.briup.smartcampus.bean.Class">
+        select * from briup_clazz where id = #{id}
+    </select>
+    <select id="selectTeacher" resultType="com.briup.smartcampus.bean.Teacher">
+        select * from briup_teacher where id = #{id}
+    </select>
+    <select id="selectQuestionnaire" resultType="com.briup.smartcampus.bean.Questionnaire">
+        select * from briup_questionnaire where id = #{id}
+    </select>
+
+
 </mapper>

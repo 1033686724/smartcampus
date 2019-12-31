@@ -56,12 +56,12 @@ public class ClassServiceImpl implements ClassService {
         }
     }
 
-    @Override
-    public void deleteBatch(int[] ids) throws RuntimeException {
-        for(int id : ids) {
-            classMapper.deleteByPrimaryKey(id);
-        }
-    }
+//    @Override
+//    public void deleteBatch(int[] ids) throws RuntimeException {
+//        for(int id : ids) {
+//            classMapper.deleteByPrimaryKey(id);
+//        }
+//    }
 
     @Override
     public void deleteById(int id) throws RuntimeException {
