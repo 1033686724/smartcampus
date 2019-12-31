@@ -1,15 +1,16 @@
 package com.briup.smartcampus.service.impl;
 
-import com.briup.smartcampus.bean.Qqn;
-import com.briup.smartcampus.bean.Question;
-import com.briup.smartcampus.bean.Questionnaire;
+import com.briup.smartcampus.bean.*;
 import com.briup.smartcampus.mapper.QqnMapper;
+import com.briup.smartcampus.mapper.QuestionMapper;
 import com.briup.smartcampus.mapper.QuestionnaireMapper;
+import com.briup.smartcampus.mapper.SurveyMapper;
 import com.briup.smartcampus.mapper.ex.QuestionnaireEXMapper;
 import com.briup.smartcampus.service.IQuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class QuestionnaireServiceImpl implements IQuestionnaireService {
@@ -19,6 +20,11 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     private QuestionnaireEXMapper questionnaireEXMapper;
     @Autowired
     private QqnMapper qqnMapper;
+    @Autowired
+    private SurveyMapper surveyMapper;
+    @Autowired
+    private QuestionMapper questionMapper;
+
     @Override
     public void saveOrUpdate(Questionnaire questionnaire,int id) throws RuntimeException {
         if (questionnaire==null)
@@ -54,18 +60,45 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     }
 
     @Override
-    public List<Questionnaire> selectById(int id) throws RuntimeException {
-            return questionnaireEXMapper.selectNameById(id);
+    public Questionnaire selectById(int id) throws RuntimeException {
+            return questionnaireMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public void deleteById(int id) throws RuntimeException {
 
+            QqnExample qqnExample=new QqnExample();
+            qqnExample.createCriteria().andQuestionnaireIdEqualTo(id);
+            qqnMapper.deleteByExample(qqnExample);
+
+            qqnMapper.deleteByExample(qqnExample);
+            SurveyExample surveyExample=new SurveyExample();
+
+            surveyExample.createCriteria().andQuestionnaireIdEqualTo(id);
+            surveyMapper.deleteByExample(surveyExample);
+
+        questionnaireMapper.deleteByPrimaryKey(id);
+
     }
 
+
+
     @Override
-    public List<Questionnaire> deleteBatch(int[] id) throws RuntimeException {
-        return null;
+    public <T>  preview(int id) throws RuntimeException {
+        Questionnaire questionnaire=questionnaireMapper.selectByPrimaryKey(id);
+
+        QqnExample qqnExample=new QqnExample();
+        qqnExample.createCriteria().andQuestionnaireIdEqualTo(id);
+        List<Qqn> list=qqnMapper.selectByExample(qqnExample);
+         List<Question> list1=null;
+        for (int i=0;i<list.size();i++){
+            QuestionExample questionExample=new QuestionExample();
+            questionExample.createCriteria().andIdEqualTo(list.get(i).getQuestionId());
+            List<Question> question=questionMapper.selectByExample(questionExample);
+            list1.addAll(question);
+
+        }
+        return questionnaire;
     }
 
 

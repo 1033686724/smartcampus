@@ -1,7 +1,9 @@
 package com.briup.smartcampus.web.controller;
 
 import com.briup.smartcampus.bean.Qqn;
+import com.briup.smartcampus.bean.Question;
 import com.briup.smartcampus.bean.Questionnaire;
+import com.briup.smartcampus.bean.ex.QuestionnaireEX;
 import com.briup.smartcampus.service.IQuestionnaireService;
 import com.briup.smartcampus.util.Message;
 import com.briup.smartcampus.util.MessageUtil;
@@ -40,8 +42,24 @@ public class QuestionnaireController {
         List<Questionnaire> list=iQuestionnaireService.searchByWord(word);
         return MessageUtil.success(list);
     }
+    @GetMapping("/Preview")
+    @ApiModelProperty(value = "预览")
+    public  Message  preview(int id){
+        Questionnaire qs=iQuestionnaireService.selectById(id);
+        return MessageUtil.success();
+    }
 
-
+    @DeleteMapping("/deleteQustionnaire")
+    public Message deleteQuestionnaire(int id){
+        iQuestionnaireService.deleteById(id);
+        return MessageUtil.success();
+    }
+    @DeleteMapping("/deleteBatch")
+    public Message deleteBatch(int[] id){
+        for (int i=0;i<id.length;i++){
+        iQuestionnaireService.deleteById(id[i]);}
+        return MessageUtil.success();
+    }
 
 
 }
