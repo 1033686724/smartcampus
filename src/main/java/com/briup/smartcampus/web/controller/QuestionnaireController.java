@@ -21,7 +21,6 @@ public class QuestionnaireController {
     @Autowired
     IQuestionnaireService iQuestionnaireService;
     @PostMapping("/addById")
-    @ApiModelProperty(value = "添加问卷")
     public Message addQuestionnaire(Questionnaire questionnaire, int[] qid){
         for (int i=0;i<qid.length;i++){
             iQuestionnaireService.saveOrUpdate(questionnaire,qid[i]);
@@ -31,19 +30,16 @@ public class QuestionnaireController {
 
     //搜索
     @GetMapping("/selectById")
-    @ApiModelProperty(value = "按照id查询")
     public Message selectById(int id){
 
         return MessageUtil.success(iQuestionnaireService.selectById(id));
     }
     @GetMapping("/selectByWord")
-    @ApiModelProperty(value = "按照关键字查询")
     public  Message selectByWord(String word){
         List<Questionnaire> list=iQuestionnaireService.searchByWord(word);
         return MessageUtil.success(list);
     }
     @GetMapping("/Preview")
-    @ApiModelProperty(value = "预览")
     public  Message  preview(int id){
         Questionnaire qs=iQuestionnaireService.selectById(id);
         return MessageUtil.success();
