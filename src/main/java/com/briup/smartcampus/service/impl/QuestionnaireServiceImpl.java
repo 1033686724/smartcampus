@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 @Service
-public class QuestionnaireServiceImpl implements IQuestionnaireService {
+public class QuestionnaireServiceImpl<T> implements IQuestionnaireService {
     @Autowired
     private QuestionnaireMapper questionnaireMapper;
     @Autowired
@@ -84,7 +84,7 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 
 
     @Override
-    public <T>  preview(int id) throws RuntimeException {
+    public List<Object>  preview(int id) throws RuntimeException {
         Questionnaire questionnaire=questionnaireMapper.selectByPrimaryKey(id);
 
         QqnExample qqnExample=new QqnExample();
@@ -98,7 +98,7 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
             list1.addAll(question);
 
         }
-        return questionnaire;
+       return null;
     }
 
 

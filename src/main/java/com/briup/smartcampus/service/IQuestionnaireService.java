@@ -14,5 +14,5 @@ public interface IQuestionnaireService {
 
     void deleteById(int id) throws  RuntimeException;
 
-    public T preview<T>(int id) throws RuntimeException;
+    List<Object> preview(int id) throws RuntimeException;
 }
