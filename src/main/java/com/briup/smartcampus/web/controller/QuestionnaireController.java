@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/问卷管理")
+@RequestMapping("/Questionnaire")
 @Api(description = "问卷管理")
 public class QuestionnaireController {
     @Autowired
+    @ApiModelProperty("按id添加")
     IQuestionnaireService iQuestionnaireService;
     @PostMapping("/addById")
     public Message addQuestionnaire(Questionnaire questionnaire, int[] qid){
