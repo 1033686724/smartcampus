@@ -31,17 +31,24 @@ public class SurveyMonitorService implements ISurveyMonitorService {
     @Override
     public void openStatusById(int id) throws RuntimeException {
         Survey survey=surveyMapper.selectByPrimaryKey(id);
+        if(survey.getStatus().equals("未开启")){
         survey.setStatus("开启");
         survey.setCode(survey.getId()*(int)Math.random()*1000+(int)Math.random()*100);
-        surveyMapper.updateByPrimaryKey(survey);
+        surveyMapper.updateByPrimaryKey(survey);}
+        else {
+            System.out.println("状态异常");
+        }
 
     }
 
     @Override
     public void stopStatusById(int id) throws RuntimeException {
         Survey survey=surveyMapper.selectByPrimaryKey(id);
+        if(survey.getStatus().equals("开启")){
         survey.setStatus("未审核");
-        surveyMapper.updateByPrimaryKey(survey);
-
+        surveyMapper.updateByPrimaryKey(survey);}
+        else {
+            System.out.println("状态异常");
+        }
     }
 }
