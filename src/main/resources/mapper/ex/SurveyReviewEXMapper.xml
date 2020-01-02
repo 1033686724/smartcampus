@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.SurveyReviewEXMapper">
+    <resultMap id="abn" type="com.briup.smartcampus.bean.ex.SurveyNameEX">
+        <id column="id" property="id"></id>
+        <result column="status" property="status"></result>
+        <result column="code" property="code"></result>
+        <result column="surveyday" property="surveyday"></result>
+        <result column="tname" property="teacherName"></result>
+        <result column="dname" property="departmentName"/>
+        <result column="clname" property="className"/>
+        <result column="cname" property="courseName"/>
+        <result column="tname" property="teacherName"/>
+        <result column="qname" property="questionnaireName"/>
+<!--        <result column="department_id" property="departmentId"></result>-->
+<!--        <result column="course_id" property="courseId"></result>-->
+<!--        <result column="clazz_id" property="clazzId"></result>-->
+<!--        <result column="teacher_id" property="teacherId"></result>-->
+<!--        <result column="questionnaire_id" property="questionnaireId"></result>-->
+<!--        <result column="average" property="average"></result>-->
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="abn">
+        select t.name tname,c.name cname,d.name dname,q.name qname,cl.name clname,s.status ,s.surveyday
+        from briup_teacher t,briup_course c,briup_department d,briup_questionnaire q,briup_survey s ,briup_clazz cl
+        where  t.id = s.user_id and c.id = s.course_id and d.id = s.department_id and q.id= s.questionnaire_id
+    </select>
+
+    <resultMap id="abC" type="com.briup.smartcampus.bean.ex.SurveyNameEX">
+        <id column="id" property="id"></id>
+        <result column="clname" property="className"/>
+        <result column="cname" property="courseName"/>
+        <result column="tname" property="teacherName"/>
+        <result column="surveyday" property="surveyday"></result>
+    </resultMap>
+
+    <select id="selectReviewById" resultMap="abC">
+        select t.name,c.name,cl.name,s.average,s.surveyday
+        from briup_teacher t,briup_course c,briup_clazz cl,briup_survey s,briup_department d,briup_questionnaire q
+        where t.id =s.user_id and c.id =s.course_id and d.id =s.department_id and q.id=s.questionnaire_id
+    </select>
+
+
+
+
+
+
+</mapper>
+
+
