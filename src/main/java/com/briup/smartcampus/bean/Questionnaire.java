@@ -1,7 +1,5 @@
 package com.briup.smartcampus.bean;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +7,6 @@ public class Questionnaire implements Serializable {
     private Integer id;
 
     private String name;
-
 
     private Date date;
 

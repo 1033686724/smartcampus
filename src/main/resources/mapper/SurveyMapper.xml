@@ -108,6 +108,293 @@
   <insert id="insert" parameterType="com.briup.smartcampus.bean.Survey">
     insert into briup_survey (id, status, code, 
       surveyday, department_id, course_id, 
+      clazz_id, user_id, questionnaire_id, 
+      average)
+    values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{code,jdbcType=INTEGER}, 
+      #{surveyday,jdbcType=DATE}, #{departmentId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
+      #{clazzId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{questionnaireId,jdbcType=INTEGER}, 
+      #{average,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.briup.smartcampus.bean.Survey">
+    insert into briup_survey
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="surveyday != null">
+        surveyday,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="clazzId != null">
+        clazz_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="questionnaireId != null">
+        questionnaire_id,
+      </if>
+      <if test="average != null">
+        average,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=INTEGER},
+      </if>
+      <if test="surveyday != null">
+        #{surveyday,jdbcType=DATE},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzId != null">
+        #{clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireId != null">
+        #{questionnaireId,jdbcType=INTEGER},
+      </if>
+      <if test="average != null">
+        #{average,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.briup.smartcampus.bean.SurveyExample" resultType="java.lang.Long">
+    select count(*) from briup_survey
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update briup_survey
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=INTEGER},
+      </if>
+      <if test="record.surveyday != null">
+        surveyday = #{record.surveyday,jdbcType=DATE},
+      </if>
+      <if test="record.departmentId != null">
+        department_id = #{record.departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseId != null">
+        course_id = #{record.courseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.clazzId != null">
+        clazz_id = #{record.clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionnaireId != null">
+        questionnaire_id = #{record.questionnaireId,jdbcType=INTEGER},
+      </if>
+      <if test="record.average != null">
+        average = #{record.average,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update briup_survey
+    set id = #{record.id,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=INTEGER},
+      surveyday = #{record.surveyday,jdbcType=DATE},
+      department_id = #{record.departmentId,jdbcType=INTEGER},
+      course_id = #{record.courseId,jdbcType=INTEGER},
+      clazz_id = #{record.clazzId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      questionnaire_id = #{record.questionnaireId,jdbcType=INTEGER},
+      average = #{record.average,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.briup.smartcampus.bean.Survey">
+    update briup_survey
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=INTEGER},
+      </if>
+      <if test="surveyday != null">
+        surveyday = #{surveyday,jdbcType=DATE},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="clazzId != null">
+        clazz_id = #{clazzId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireId != null">
+        questionnaire_id = #{questionnaireId,jdbcType=INTEGER},
+      </if>
+      <if test="average != null">
+        average = #{average,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.briup.smartcampus.bean.Survey">
+    update briup_survey
+    set status = #{status,jdbcType=VARCHAR},
+      code = #{code,jdbcType=INTEGER},
+      surveyday = #{surveyday,jdbcType=DATE},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      course_id = #{courseId,jdbcType=INTEGER},
+      clazz_id = #{clazzId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      questionnaire_id = #{questionnaireId,jdbcType=INTEGER},
+      average = #{average,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.briup.smartcampus.bean.Survey">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="code" jdbcType="INTEGER" property="code" />
+    <result column="surveyday" jdbcType="DATE" property="surveyday" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="clazz_id" jdbcType="INTEGER" property="clazzId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="questionnaire_id" jdbcType="INTEGER" property="questionnaireId" />
+    <result column="average" jdbcType="DOUBLE" property="average" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, status, code, surveyday, department_id, course_id, clazz_id, user_id, questionnaire_id, 
+    average
+  </sql>
+  <select id="selectByExample" parameterType="com.briup.smartcampus.bean.SurveyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from briup_survey
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from briup_survey
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from briup_survey
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.briup.smartcampus.bean.SurveyExample">
+    delete from briup_survey
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.briup.smartcampus.bean.Survey">
+    insert into briup_survey (id, status, code, 
+      surveyday, department_id, course_id, 
       clazz_id, user_id, questionnaire_id,
       average)
     values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{code,jdbcType=INTEGER}, 

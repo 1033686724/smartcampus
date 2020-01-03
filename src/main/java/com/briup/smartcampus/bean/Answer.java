@@ -2,12 +2,12 @@ package com.briup.smartcampus.bean;
 
 import java.io.Serializable;
 
-public class Question implements Serializable {
+public class Answer implements Serializable {
     private Integer id;
 
-    private String name;
+    private String answer;
 
-    private String type;
+    private Integer surveyId;
 
     private static final long serialVersionUID = 1L;
 
@@ -19,20 +19,20 @@ public class Question implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setAnswer(String answer) {
+        this.answer = answer == null ? null : answer.trim();
     }
 
-    public String getType() {
-        return type;
+    public Integer getSurveyId() {
+        return surveyId;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setSurveyId(Integer surveyId) {
+        this.surveyId = surveyId;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class Question implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", type=").append(type);
+        sb.append(", answer=").append(answer);
+        sb.append(", surveyId=").append(surveyId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

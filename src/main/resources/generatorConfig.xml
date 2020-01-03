@@ -65,5 +65,6 @@
 		<table tableName="briup_category" domainObjectName="Category"></table>
 		<table tableName="briup_customer" domainObjectName="Customer"></table>
 		<table tableName="briup_link" domainObjectName="Link"></table>
+		<table tableName="briup_answer" domainObjectName="Answer"></table>
 	</context>
 </generatorConfiguration>
