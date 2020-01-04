@@ -13,4 +13,10 @@ public interface ISurveyService {
     void delete(int id) throws RuntimeException;
 
     void deleteBatch(int[] ids) throws RuntimeException;
+
+
+
+    int averageOptions(Survey survey) throws RuntimeException;
+
+    List<SurveyEX> selectKeDiaoInFo() throws RuntimeException;
 }

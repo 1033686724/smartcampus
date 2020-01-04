@@ -50,4 +50,17 @@ public class SurveyServiceImpl implements ISurveyService {
             surveyMapper.deleteByPrimaryKey(id);
         }
     }
+
+    @Override
+    public int averageOptions(Survey survey ) throws RuntimeException {
+
+        return 0;
+    }
+
+    @Override
+    public List<SurveyEX> selectKeDiaoInFo() throws RuntimeException {
+
+        List<SurveyEX> list = surveyEXMapper.selectKeDiao();
+        return list;
+    }
 }

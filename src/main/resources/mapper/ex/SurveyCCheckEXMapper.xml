@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.smartcampus.mapper.ex.SurveyCheckEXMapper">
+    <resultMap id="abm" type="com.briup.smartcampus.bean.ex.SurveyEX">
+
+
+
+        <id column="clazz_id" property="clazzId"></id>
+
+        <result column="average" property="average"></result>
+
+        <association property="clazz" column="clazz_id" select="selectClazzName"></association>
+
+
+
+
+    </resultMap>
+
+    <select id="selectKeDiao" resultMap="abm">
+        select clazz_id from briup_survey
+    </select>
+
+    <select id="selectClazzName" resultType="com.briup.smartcampus.bean.Class">
+        select name from briup_clazz where id = #{id}
+    </select>
+
+    <resultMap id="abb" type="com.briup.smartcampus.bean.ex.SurveyEX_1">
+        <id column="claName" property="claName"></id>
+        <result column="average" property="average"></result>
+
+    </resultMap>
+
+    <select id="findAverage" resultMap="abb">
+        select c.name claName,s.average average,s.id sid
+        from briup_survey s,briup_clazz c
+        where s.clazz_id = c.id and s.id = #{id}
+    </select>
+
+
+
+
+    </mapper>

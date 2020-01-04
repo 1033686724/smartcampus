@@ -9,6 +9,8 @@ import java.util.List;
 public interface SurveyEXMapper {
     List<SurveyEX> findAll() throws RuntimeException;
 
+    int average(Survey survey) throws RuntimeException;
 
+    List<SurveyEX> selectKeDiao() throws RuntimeException;
 
 }
